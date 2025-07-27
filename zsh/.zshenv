@@ -1,0 +1,37 @@
+export XKB_DEFAULT_LAYOUT="de"
+export EDITOR="/usr/bin/vim"
+export BROWSER="/usr/bin/firefox"
+export TERMINAL="/usr/bin/alacritty"
+
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_STATE_HOME="$HOME/.local/state"
+export XDG_CACHE_HOME="$HOME/.cache"
+
+export HISTFILE="${XDG_STATE_HOME}/zsh/history"
+export GTK2_RC_FILES="${XDG_CONFIG_HOME}/gtk-2.0/gtkrc"
+export XAUTHORITY="${XDG_RUNTIME_DIR}/Xauthority"
+
+# Dev-Tools
+export CARGO_HOME="${XDG_DATA_HOME}/cargo"
+export GRADLE_USER_HOME="${XDG_DATA_HOME}/gradle"
+export PLATFORMIO_CORE_DIR="${XDG_DATA_HOME}/platformio"
+export PICO_SDK_PATH="${XDG_DATA_HOME}/pico-sdk/sdk/2.1.1"
+export GOPATH="${XDG_DATA_HOME}/go"
+export GOMODCACHE="${GOPATH}/pkg/mod"
+export JUPYTER_CONFIG_DIR="${XDG_CONFIG_HOME}/jupyter"
+export JUPYTER_DATA_DIR="${XDG_DATA_HOME}/jupyter"
+export JUPYTER_RUNTIME_DIR="${XDG_DATA_HOME}/jupyter/runtime"
+export IPYTHONDIR="${XDG_CONFIG_HOME}/ipython"
+export SDKMAN_DIR="${XDG_DATA_HOME}/sdkman"
+
+export OLLAMA_MODELS="${XDG_DATA_HOME}/ollama/models"
+
+# Options for properly displaying Java applications
+export _JAVA_AWT_WM_NONREPARENTING=1
+export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on'
+
+export PATH="${PATH}:${HOME}/.local/bin"
+
+export QT_SCALE_FACTOR=1
+export WINIT_X11_SCALE_FACTOR=1.6

@@ -1,0 +1,61 @@
+# --- Prompt -------------------------------------------------------------------
+# Load version control information
+autoload -Uz vcs_info
+
+# Format the vcs_info_msg_0_ variable
+zstyle ':vcs_info:*' enable git
+zstyle ':vcs_info:git:*' formats ' (%b)'
+
+# Define the precmd hook function
+precmd() {
+    vcs_info
+    print -Pn "\e]0;%n@%m in %/\a"
+}
+
+# Check if connected via ssh
+checkssh() {
+    if test -n "$SSH_CLIENT"
+    then
+        print "SSH "
+    fi
+}
+
+# The actual prompt
+setopt PROMPT_SUBST
+PROMPT='$(checkssh)%3~${vcs_info_msg_0_}%(?.. %F{9}E:%?%f) %# '
+#RPROMPT='%*'
+
+# --- History ------------------------------------------------------------------
+HISTSIZE=100000
+SAVEHIST=100000
+
+# Share history between sessions
+setopt SHARE_HISTORY
+
+# History in cache directory:
+HISTFILE=~/.cache/zsh/history
+
+# --- Tab-Completion -----------------------------------------------------------
+autoload -U compinit
+zstyle ':completion:*' menu select 
+zmodload zsh/complist
+compinit
+_comp_options+=(globdots) # Include hidden files.
+
+# --- Keybindings --------------------------------------------------------------
+# Vi mode
+bindkey -v
+export KEYTIMEOUT=1
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'k' vi-up-line-or-history
+bindkey -M menuselect 'l' vi-forward-char
+bindkey -M menuselect 'j' vi-down-line-or-history
+bindkey -v '^?' backward-delete-char
+
+# Search history (ctrl-r)
+bindkey '^R' history-incremental-search-backward
+
+# --- Aliases ------------------------------------------------------------------
+alias vim="nvim"
+alias ls="ls --color"
+alias la="ls -lah"

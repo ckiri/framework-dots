@@ -1,0 +1,4 @@
+#!/bin/sh
+
+test -z "$SSH_CLIENT" && test -z "$TMUX" && test -z "$DISPLAY" \
+    && sway

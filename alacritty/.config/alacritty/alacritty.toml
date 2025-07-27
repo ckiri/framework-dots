@@ -1,0 +1,26 @@
+[general]
+import = [
+    "./themes/lucario.toml"
+]
+
+[font]
+size = 12
+offset = { x = 0, y = 0 }
+
+[font.bold]
+style = "Bold"
+
+[font.bold_italic]
+style = "Bold Italic"
+
+[font.italic]
+style = "Italic"
+
+[font.normal]
+style = "Regular"
+
+[window]
+dynamic_padding = true
+padding = { x = 0, y = 0 }
+decorations = "FULL"
+dynamic_title = true
