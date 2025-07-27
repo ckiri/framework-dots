@@ -26,9 +26,9 @@ exec swayidle -w \
 # Start Gromit-MPX
 exec gromit-mpx >/dev/null 2>&1
 # Set GTK and icon theme
-exec dconf write /org/gnome/desktop/interface/color-scheme '"prefer-dark"'
-exec gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
-exec gsettings set org.gnome.desktop.interface icon-theme 'Papirus-Dark'
+exec dconf write /org/gnome/desktop/interface/color-scheme '"prefer-light"'
+exec gsettings set org.gnome.desktop.interface gtk-theme ''
+exec gsettings set org.gnome.desktop.interface icon-theme ''
 # Output configuration
 exec kanshi >/dev/null 2>&1
 # Enable eyesafing mode, -l = location, -t = temperature 
@@ -109,6 +109,7 @@ bindsym $mod+Shift+8 move container to workspace number 8
 bindsym $mod+Shift+9 move container to workspace number 9
 bindsym $mod+Shift+0 move container to workspace number 10
 # Window rules
+for_window [app_id="Minimal EGit"] floating enable
 for_window [instance="pinentry-gtk"] floating enable
 for_window [app_id="org.pulseaudio.pavucontrol"] floating enable
 for_window [app_id="blueman-manager"] floating enable
@@ -149,13 +150,13 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 # "Style" sway windows:
-font monospace 12
+font monospace 11
 titlebar_border_thickness 1
 titlebar_padding 4 4
 # Status Bar:
 # Read `man 5 sway-bar` for more information about this section.
 bar {
-    font monospace 12
+    font monospace 11
     position bottom
     height 0
     # When the status_command prints a new line to stdout, swaybar updates.

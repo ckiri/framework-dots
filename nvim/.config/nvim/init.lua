@@ -40,7 +40,7 @@ vim.opt.number = false
 vim.opt.relativenumber = false
 vim.opt.smartindent = true
 vim.opt.autoindent = true
-vim.opt.colorcolumn = { "80", "120" }
+--vim.opt.colorcolumn = { "80", "120" }
 
 -- Legacy vim options, because I can't figure out how to set them in lua
 vim.cmd("set path+=**")
@@ -133,3 +133,5 @@ function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
     opts.border = opts.border or "single"
     return orig_util_open_floating_preview(contents, syntax, opts, ...)
 end
+
+vim.cmd("colorscheme lucario")
