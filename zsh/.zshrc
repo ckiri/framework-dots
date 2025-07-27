@@ -22,7 +22,7 @@ checkssh() {
 
 # The actual prompt
 setopt PROMPT_SUBST
-PROMPT='$(checkssh)%3~${vcs_info_msg_0_}%(?.. %F{9}E:%?%f) %# '
+PROMPT='$(checkssh)%3~${vcs_info_msg_0_}%(?.. E:%?) %# '
 #RPROMPT='%*'
 
 # --- History ------------------------------------------------------------------
@@ -57,5 +57,3 @@ bindkey '^R' history-incremental-search-backward
 
 # --- Aliases ------------------------------------------------------------------
 alias vim="nvim"
-alias ls="ls --color"
-alias la="ls -lah"
