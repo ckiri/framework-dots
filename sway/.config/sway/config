@@ -54,16 +54,15 @@ bindsym $mod+Shift+q exec swaynag -t \
 bindsym $wmod+l exec swaylock -f
 # Start browser
 bindsym $mod+w exec $BROWSER
-# Start e-mail client
-# Take a screenshot with the print key, like it should supposed to be
-bindsym Print exec wayshot.sh
 # Control Gromit-MPX
 bindsym F9 exec gromit-mpx --toggle --clear
 bindsym F9+Shift exec gromit-mpx --toggle
+# Take a screenshot with the print key, like it should supposed to be
+bindsym Print exec ~/.local/bin/wayshot.sh
 # In case of crappy keyboards that don't have a print key:
-bindsym $wmod+Shift+s exec wayshot.sh
+bindsym $wmod+Shift+s exec ~/.local/bin/wayshot.sh
 # Change output configuration
-bindsym $mod+Shift+p exec outputprofile.sh
+bindsym $mod+Shift+p exec ~/.local/bin/outputprofile.sh
 # Control monitor brigthness
 bindsym XF86MonBrightnessUp exec brightnessctl --exponent=5 set +5%
 bindsym XF86MonBrightnessDown exec brightnessctl --exponent=5 set 5%-
@@ -167,7 +166,7 @@ bar {
     height 0
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
-    status_command slstatus -s
+    status_command while true; do ~/.local/bin/status.sh; sleep 60; done
     colors {
         statusline #ffffff
         background #323232
