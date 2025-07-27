@@ -1,0 +1,6 @@
+[submodule "nvim/.config/nvim/pack/nvim/start/nvim-lspconfig"]
+	path = nvim/.config/nvim/pack/nvim/start/nvim-lspconfig
+	url = https://github.com/neovim/nvim-lspconfig.git
+[submodule "nvim/.config/nvim/pack/nvim/start/vimwiki"]
+	path = nvim/.config/nvim/pack/nvim/start/vimwiki
+	url = https://github.com/vimwiki/vimwiki.git
