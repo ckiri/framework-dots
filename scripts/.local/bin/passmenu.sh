@@ -6,11 +6,11 @@
 symbol="/usr/share/icons/Papirus-Dark/symbolic/status/dialog-password-symbolic.svg"
 
 # Check if a wayland compositor is used, if not throw error
-if [[ -n $WAYLAND_DISPLAY ]]; then
-	menu="wmenu"
+if test -n $WAYLAND_DISPLAY; then
+    menu="wmenu"
 else
-	notify-send -u normal "No wayland compositor used" -i $symbol
-	exit 1
+    notify-send -u normal "No wayland compositor used" -i $symbol
+    exit 1
 fi
 
 # Select all passwords in password store
@@ -20,7 +20,7 @@ password_files=$(find ~/.password-store -type f -name '*.gpg' -exec sh -c 'basen
 password=$(printf '%s\n' "${password_files}" | $menu "$@")
 
 # Exit if store is empty
-[[ -n $password ]] || exit
+test -n $password || exit
 
 # Copy selected password into clipboard
 pass show --clip $password

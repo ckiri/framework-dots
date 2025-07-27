@@ -8,4 +8,4 @@ home-external-only
 home-extend
 ")
 
-[[ ! -z $choice ]] && kanshictl switch $choice
+test ! -z $choice && kanshictl switch $choice
