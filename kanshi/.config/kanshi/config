@@ -68,7 +68,7 @@ profile mirror {
         position 2256,0
         scale 1
     }
-    exec swaymsg 'workspace 10';
+    exec swaymsg "workspace 10; move workspace to output DP-1";
     exec wl-present mirror eDP-1 --fullscreen-output DP-1 --fullscreen
 }
 
