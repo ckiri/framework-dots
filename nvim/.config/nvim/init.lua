@@ -62,6 +62,28 @@ vim.g.vimwiki_list = {
     }
 }
 
+-- Completion setup -----------------------------------------------------------
+
+local cmp = require("cmp")
+cmp.setup({
+    window = {
+        completion = cmp.config.window.bordered({border = "single" }),
+        documentation = cmp.config.window.bordered({border = "single" }),
+    },
+    mapping = cmp.mapping.preset.insert({
+    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    ["<C-n>"] = cmp.mapping.select_next_item(),
+    ["<C-p>"] = cmp.mapping.select_prev_item(),
+    ["<C-Space>"] = cmp.mapping.complete({}),
+    }),
+    sources = {
+        { name = "nvim_lsp" },
+    }
+})
+
+-- Add LSP capabilities to cmp
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
 -- Key mappings ---------------------------------------------------------------
 
 vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float)
@@ -101,6 +123,13 @@ lspconfig.clangd.setup({
 -- Python
 lspconfig.pylsp.setup{}
 
--- UI & colors -----------------------------------------------------------------
 
-vim.cmd("colorscheme lucario")
+-- UI & colors ----------------------------------------------------------------
+
+-- Override default window options for consistent border drawing
+local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
+function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
+    opts = opts or {}
+    opts.border = opts.border or "single"
+    return orig_util_open_floating_preview(contents, syntax, opts, ...)
+end
