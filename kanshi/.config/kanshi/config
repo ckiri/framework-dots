@@ -1,87 +1,40 @@
-# Default profile for framework 13 laptop.
-profile framework {
-    output eDP-1 enable {
-        mode 2256x1504@59.999001Hz
-        scale 2
-        position 0,0
-    }
-}
-
-# Default profile for desk pc.
-profile arch-box {
-    output "AOC 27B3CF2 AUEQ29A002606" enable {
-        mode 1920x1080@100.000000Hz
-        scale 1
-        position 0,0
-    }
-}
-
-# Default profile for tv
-profile tv {
-    output "KON TV_MONITOR 0x00000001" enable {
-        mode 1920x1080@60.000000Hz
-        scale 1
-        position 0,0
-    }
-}
-
-# Disable the internal output
-profile home-external-only {
+profile home {
     output eDP-1 disable
     output "AOC 27B3CF2 AUEQ29A002606" enable {
         mode 1920x1080@100.000000Hz
+        adaptive_sync on
         scale 1
         position 0,0
     }
 }
 
-# Extend with external output to the right
-profile home-extend {
-    output eDP-1 enable {
-        mode 2256x1504@59.999001Hz
-        scale 2
-        position -1128,0
-    }
-    output "AOC 27B3CF2 AUEQ29A002606" enable {
-        mode 1920x1080@100.000000Hz
-        scale 1
-        position 0,0
-    }
-}
-
-# The following profiles are for use with unknown outputs (e.g. use in public).
-# Therefore those have the actual output name rather than the manufacturer name
-# and model number.
-
-# Mirror the two outputs in use.
-# The internal image is streamed to the external display. The wl-mirror is after
-# it is called moved to workspace 10 so it doesnt interfere with other
-# workspaces.
+# Mirror the two outputs in use. The internal image is streamed to the external
+# display. Move to workspace 10, then start streaming with wl-mirror.
 profile mirror {
     output eDP-1 enable {
         mode 2256x1504@59.999001Hz
         position 0,0
-        scale 2
+        scale 1.5
     }
     output DP-1 enable {
         mode --custom 1920x1080
         position 2256,0
         scale 1
     }
-    exec swaymsg "workspace 10; move workspace to output DP-1";
+    exec swaymsg 'workspace 10, move workspace to output DP-1';
     exec wl-present mirror eDP-1 --fullscreen-output DP-1 --fullscreen
 }
 
 # Set internal display below the external output.
 profile extend {
-    output DP-1 enable {
-        mode --custom 1920x1080@59.999001Hz
-        scale 2
-        position -1128,0
-    }
     output eDP-1 enable {
         mode 2256x1504@59.999001Hz
-        scale 1
+        scale 1.5
+        position 208,-1080
+    }
+    output DP-1 enable {
+        mode --custom 1920x1080
+        scale 1.5
         position 0,0
     }
 }
