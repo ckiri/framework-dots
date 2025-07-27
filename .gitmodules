@@ -4,3 +4,9 @@
 [submodule "nvim/.config/nvim/pack/nvim/start/vimwiki"]
 	path = nvim/.config/nvim/pack/nvim/start/vimwiki
 	url = https://github.com/vimwiki/vimwiki.git
+[submodule "nvim/.config/nvim/pack/nvim/start/cmp-nvim-lsp"]
+	path = nvim/.config/nvim/pack/nvim/start/cmp-nvim-lsp
+	url = https://github.com/hrsh7th/cmp-nvim-lsp
+[submodule "nvim/.config/nvim/pack/nvim/start/nvim-cmp"]
+	path = nvim/.config/nvim/pack/nvim/start/nvim-cmp
+	url = https://github.com/hrsh7th/nvim-cmp
