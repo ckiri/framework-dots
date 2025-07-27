@@ -5,23 +5,23 @@
 OUTPUT_PREFIX="$(xdg-user-dir PICTURES)/screenshots/"
 
 # Create output folder if it doesn't exist
-mkdir -p $OUTPUT_PREFIX
+test ! -d $OUTPUT_PREFIX && mkdir -p $OUTPUT_PREFIX
 
-# Define a function to save screenshot to file
+# Take the screenshot, save to a file & copy to clipboard
 shoot() {
-  # Get current date and time
-  timestamp=$(date +"%Y-%m-%d_%H-%M-%S")
+    # Get current date and time
+    timestamp=$(date +"%Y-%m-%d_%H-%M-%S")
 
-  # Create unique filename for each screenshot
-  input=$(printf "\n" | wmenu -S "#222222" -p "Enter a filename:")
-  test -n "$input" && filename="${OUTPUT_PREFIX}${input}.png"
-  test ! -n "$input" && filename="${OUTPUT_PREFIX}${timestamp}.png"
+    # Name screenshot
+    input=$(printf "\n" | wmenu -S "#222222" -p "Enter a filename:")
+    test -n "$input" && filename="${OUTPUT_PREFIX}${input}.png"
+    # Take timesramp if input/name is empty
+    test ! -n "$input" && filename="${OUTPUT_PREFIX}${timestamp}.png"
 
-  # Save screenshot to file
-  grim -g "$(slurp)" - | wl-copy --type image/png
-  test ! -n "$filename" && exit 1
-  wl-paste > $filename
+    # Save screenshot to file & copy to clipboard
+    grim -g "$(slurp)" - | wl-copy --type image/png
+    test ! -n "$filename" && exit 1
+    wl-paste > $filename
 }
 
-# Call the function with output folder and filename template
 shoot
