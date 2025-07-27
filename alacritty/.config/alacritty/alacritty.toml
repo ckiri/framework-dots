@@ -1,6 +1,6 @@
 [general]
 import = [
-    "./themes/lucario.toml"
+    "./themes/nvim-dark.toml"
 ]
 
 [font]
