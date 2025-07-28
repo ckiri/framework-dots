@@ -9,7 +9,7 @@ set $up k
 set $right l
 # Note: pass the final command to swaymsg so that the resulting window can be
 # opened on the original workspace that the command was run on.
-set $menu dmenu_path | wmenu -l 25 | xargs swaymsg exec --
+set $menu wmenu-run -l 25 | xargs swaymsg exec --
 # Break up output power management commands for a more readable config
 set $opm_dim 'brightnessctl --save && brightnessctl set 1%'
 set $opm_restore 'brightnessctl --restore'
@@ -189,14 +189,14 @@ output eDP-1 {
     scale 1.5
     scale_filter nearest
     position 0 0
-    background #000000 solid_color 
+    background #777777 solid_color 
 }
 output "AOC 27B3CF2 AUEQ29A002606" enable {
     mode 1920x1080@100.000000Hz
     adaptive_sync on
     render_bit_depth 8
     position 1504 0
-    background #000000 solid_color 
+    background #777777 solid_color 
 }
 # Set XDG_CURRENT_DESKTOP
 include /etc/sway/config.d/*

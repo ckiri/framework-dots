@@ -22,7 +22,7 @@ checkssh() {
 
 # The actual prompt
 setopt PROMPT_SUBST
-PROMPT='$(checkssh)%3~${vcs_info_msg_0_}%(?.. E:%?) %# '
+PROMPT='$(checkssh)%3~${vcs_info_msg_0_}%(?.. %F{9}E:%?%f) %# '
 #RPROMPT='%*'
 
 # --- History ------------------------------------------------------------------
@@ -52,8 +52,25 @@ bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey -v '^?' backward-delete-char
 
-# Search history (ctrl-r)
-bindkey '^R' history-incremental-search-backward
+# Loads FZF keybindings, replacing native reverse search etc with FZF
+test -f /usr/share/fzf/key-bindings.zsh \
+    && source /usr/share/fzf/key-bindings.zsh
+
+# Set options for FZF
+export FZF_DEFAULT_OPTS="
+--ansi
+--layout=reverse
+--no-color
+--no-unicode
+--no-scrollbar
+--no-bold
+--height=25
+--pointer=' '
+--marker=' '
+--marker-multi-line=''
+"
 
 # --- Aliases ------------------------------------------------------------------
 alias vim="nvim"
+alias ls="ls --color"
+alias la="ls -lah"
