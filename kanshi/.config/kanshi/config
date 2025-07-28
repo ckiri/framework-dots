@@ -1,5 +1,27 @@
+profile framework {
+    output eDP-1 enable {
+        mode 2256x1504@59.999001Hz
+        position 0,0
+        scale 1.5
+    }
+}
+
 profile home {
     output eDP-1 disable
+    output "AOC 27B3CF2 AUEQ29A002606" enable {
+        mode 1920x1080@100.000000Hz
+        adaptive_sync on
+        scale 1
+        position 0,0
+    }
+}
+
+profile home-extend {
+    output eDP-1 enable {
+        mode 2256x1504@59.999001Hz
+        scale 1.5
+        position -1504,0
+    }
     output "AOC 27B3CF2 AUEQ29A002606" enable {
         mode 1920x1080@100.000000Hz
         adaptive_sync on
@@ -30,7 +52,7 @@ profile extend {
     output eDP-1 enable {
         mode 2256x1504@59.999001Hz
         scale 1.5
-        position 208,-1080
+        position 208,1080
     }
     output DP-1 enable {
         mode --custom 1920x1080
