@@ -7,6 +7,7 @@ vim.g.have_nerd_font = false
 vim.g.nwtrw_liststyle = 3 vim.g.netrw_banner = 0
 
 -- Options
+vim.opt.termguicolors = false
 vim.opt.laststatus = 2
 vim.opt.mouse = "a"
 vim.opt.showmode = true
@@ -33,7 +34,7 @@ vim.opt.expandtab = true
 vim.opt.formatoptions = "tcqrn1"
 vim.opt.hlsearch = true
 vim.opt.showtabline = 1
-vim.opt.background = "dark"
+vim.opt.background = "light"
 vim.opt.wrap = false
 vim.opt.cursorline = false
 vim.opt.number = false
@@ -133,5 +134,3 @@ function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
     opts.border = opts.border or "single"
     return orig_util_open_floating_preview(contents, syntax, opts, ...)
 end
-
-vim.cmd("colorscheme lucario")

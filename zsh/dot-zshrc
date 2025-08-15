@@ -71,6 +71,5 @@ export FZF_DEFAULT_OPTS="
 "
 
 # --- Aliases ------------------------------------------------------------------
-alias vim="nvim"
 alias ls="ls --color"
 alias la="ls -lah"

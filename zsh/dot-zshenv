@@ -35,3 +35,4 @@ export PATH="${PATH}:${HOME}/.local/bin"
 
 export QT_SCALE_FACTOR=1
 export WINIT_X11_SCALE_FACTOR=1.6
+. "/home/chris/.local/share/bob/env/env.sh"

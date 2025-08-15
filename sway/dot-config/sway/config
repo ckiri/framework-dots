@@ -150,13 +150,13 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 # "Style" sway windows:
-font monospace 11
+font sans-serif 11
 titlebar_border_thickness 1
 titlebar_padding 4 4
 # Status Bar:
 # Read `man 5 sway-bar` for more information about this section.
 bar {
-    font monospace 11
+    font sans-serif 11
     position bottom
     height 0
     # When the status_command prints a new line to stdout, swaybar updates.
@@ -195,7 +195,7 @@ output "AOC 27B3CF2 AUEQ29A002606" enable {
     mode 1920x1080@100.000000Hz
     adaptive_sync on
     render_bit_depth 8
-    position 1504 0
+    position 3840 0
     background #777777 solid_color 
 }
 # Set XDG_CURRENT_DESKTOP
