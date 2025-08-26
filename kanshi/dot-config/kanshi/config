@@ -1,8 +1,8 @@
 profile framework {
     output eDP-1 enable {
         mode 2256x1504@59.999001Hz
-        position 0,0
         scale 1.5
+        position 0,0
     }
 }
 
@@ -43,7 +43,6 @@ profile mirror {
         position 2256,0
         scale 1
     }
-    exec swaymsg 'workspace 10, move workspace to output DP-1';
     exec wl-present mirror eDP-1 --fullscreen-output DP-1 --fullscreen
 }
 

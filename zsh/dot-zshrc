@@ -1,75 +1,51 @@
-# --- Prompt -------------------------------------------------------------------
-# Load version control information
+# load version control information
 autoload -Uz vcs_info
 
-# Format the vcs_info_msg_0_ variable
+# enable the version-control variable & format it
 zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:git:*' formats ' (%b)'
 
-# Define the precmd hook function
+# define the precmd hook function
 precmd() {
-    vcs_info
-    print -Pn "\e]0;%n@%m in %/\a"
+    vcs_info # show version controll information e.g. branch-name
+    print -Pn "\e]0;%n@%m in %/\a" # show shell-session information on window title
 }
 
-# Check if connected via ssh
+# check if connected via ssh
 checkssh() {
     if test -n "$SSH_CLIENT"
     then
-        print "SSH "
+        print "%BSSH%b "
     fi
 }
 
-# The actual prompt
+# prompt configuration
 setopt PROMPT_SUBST
-PROMPT='$(checkssh)%3~${vcs_info_msg_0_}%(?.. %F{9}E:%?%f) %# '
-#RPROMPT='%*'
+PROMPT='$(checkssh)%3~${vcs_info_msg_0_}%(?.. E:%?) %# '
 
-# --- History ------------------------------------------------------------------
+# shell history configuration
 HISTSIZE=100000
 SAVEHIST=100000
+setopt SHARE_HISTORY # share history between sessions
+HISTFILE=~/.cache/zsh/history # history cache directory
 
-# Share history between sessions
-setopt SHARE_HISTORY
-
-# History in cache directory:
-HISTFILE=~/.cache/zsh/history
-
-# --- Tab-Completion -----------------------------------------------------------
+# tab-completion
 autoload -U compinit
 zstyle ':completion:*' menu select 
 zmodload zsh/complist
 compinit
 _comp_options+=(globdots) # Include hidden files.
 
-# --- Keybindings --------------------------------------------------------------
-# Vi mode
-bindkey -v
+# keymaps
+bindkey -v # vi-mode
 export KEYTIMEOUT=1
 bindkey -M menuselect 'h' vi-backward-char
 bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey -v '^?' backward-delete-char
+bindkey '^R' history-incremental-search-backward # reverse search history
 
-# Loads FZF keybindings, replacing native reverse search etc with FZF
-test -f /usr/share/fzf/key-bindings.zsh \
-    && source /usr/share/fzf/key-bindings.zsh
-
-# Set options for FZF
-export FZF_DEFAULT_OPTS="
---ansi
---layout=reverse
---no-color
---no-unicode
---no-scrollbar
---no-bold
---height=25
---pointer=' '
---marker=' '
---marker-multi-line=''
-"
-
-# --- Aliases ------------------------------------------------------------------
+# aliases 
 alias ls="ls --color"
 alias la="ls -lah"

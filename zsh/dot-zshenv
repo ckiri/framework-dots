@@ -1,12 +1,12 @@
-export XKB_DEFAULT_LAYOUT="de"
-export EDITOR="/usr/bin/vim"
-export BROWSER="/usr/bin/firefox"
-export TERMINAL="/usr/bin/alacritty"
-
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_STATE_HOME="$HOME/.local/state"
 export XDG_CACHE_HOME="$HOME/.cache"
+
+export XKB_DEFAULT_LAYOUT="de"
+export EDITOR="${XDG_DATA_HOME}/bob/nvim-bin/nvim"
+export BROWSER="/usr/bin/firefox"
+export TERMINAL="/usr/bin/alacritty"
 
 export HISTFILE="${XDG_STATE_HOME}/zsh/history"
 export GTK2_RC_FILES="${XDG_CONFIG_HOME}/gtk-2.0/gtkrc"
