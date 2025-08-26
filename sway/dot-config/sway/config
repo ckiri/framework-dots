@@ -21,14 +21,14 @@ exec swayidle -w \
     timeout 900 $opm_dim resume $opm_restore \
     timeout 1200 'swaylock -f' \
     timeout 1260 $opm_off resume $opm_on \
-    timeout 1800 'systemctl suspend' \
+    timeout 1800 'systemctl suspend-then-hibernate' \
     before-sleep 'swaylock -f' >/dev/null 2>&1
 # Start Gromit-MPX
 exec gromit-mpx >/dev/null 2>&1
 # Set GTK and icon theme
 exec dconf write /org/gnome/desktop/interface/color-scheme '"prefer-light"'
-exec gsettings set org.gnome.desktop.interface gtk-theme ''
-exec gsettings set org.gnome.desktop.interface icon-theme ''
+exec gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita'
+exec gsettings set org.gnome.desktop.interface icon-theme 'Papirus-Light'
 # Output configuration
 exec kanshi >/dev/null 2>&1
 # Enable eyesafing mode, -l = location, -t = temperature 
@@ -189,14 +189,14 @@ output eDP-1 {
     scale 1.5
     scale_filter nearest
     position 0 0
-    background #777777 solid_color 
+		background #000000
 }
 output "AOC 27B3CF2 AUEQ29A002606" enable {
     mode 1920x1080@100.000000Hz
     adaptive_sync on
     render_bit_depth 8
     position 3840 0
-    background #777777 solid_color 
+		background #000000
 }
 # Set XDG_CURRENT_DESKTOP
 include /etc/sway/config.d/*
