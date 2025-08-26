@@ -1,10 +1,5 @@
-[general]
-import = [
-    "./themes/light.toml"
-]
-
 [font]
-size = 11
+size = 12
 offset = { x = 0, y = 0 }
 
 [font.bold]
@@ -24,3 +19,27 @@ dynamic_padding = true
 padding = { x = 0, y = 0 }
 decorations = "FULL"
 dynamic_title = true
+
+[colors.primary]
+background = "#FFFFFF"
+foreground = "#000000"
+
+[colors.bright]
+black   = "#484848"
+red     = "#EE0000"
+green   = "#009000"
+yellow  = "#EEAA44"
+blue    = "#4444FF"
+magenta = "#D800D8"
+cyan    = "#009898"
+white   = "#FFFFFF"
+
+[colors.normal]
+black   = "#000000"
+red     = "#BB0000"
+green   = "#007000"
+yellow  = "#AA7722"
+blue    = "#0000EE"
+magenta = "#C400C4"
+cyan    = "#008484"
+white   = "#C8C8C8"
