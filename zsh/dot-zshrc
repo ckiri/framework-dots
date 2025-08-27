@@ -49,3 +49,4 @@ bindkey '^R' history-incremental-search-backward # reverse search history
 # aliases 
 alias ls="ls --color"
 alias la="ls -lah"
+alias nvim="vim"

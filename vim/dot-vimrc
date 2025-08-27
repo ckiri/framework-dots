@@ -51,7 +51,6 @@ autocmd FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 autocmd FileType yaml setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 autocmd FileType toml setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 
-map <leader><space> :nohlsearch<cr>                                             " clear search shortcut
 nnoremap <C-j> :bnext<CR>
 nnoremap <C-k> :bprev<CR>
 
