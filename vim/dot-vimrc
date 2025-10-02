@@ -1,37 +1,39 @@
-set nocompatible                                                                " make vim act like vim and not vi
+set nocompatible                " make vim act like vim and not vi
 
 syntax off
 
 filetype plugin indent on
 
 let mapleader = " "
-let g:netrw_banner=0                                                            " disable netrw's (filebrowser) banner, which takes up a lot of space
-let g:netrw_liststyle=3                                                         " enable a tree style list
+let g:netrw_banner=0            " disable netrw's (filebrowser) banner, which takes up a lot of space
+let g:netrw_liststyle=3         " enable a tree style list
 
-set nowrap
-set mouse=a                                                                     " allow the mouse
-set path+=**                                                                    " allows for global searches
+"set nowrap
+set mouse=a                     " allow the mouse
+set path+=**                    " allows for global searches
 set clipboard^=unnamed
 set clipboard^=unnamedplus
 set undofile
 set undodir=~/.cache/vim/undo
 set undolevels=1000
-set ruler                                                                       " show line and column number (on the statusline)
+set ruler                       " show line and column number (on the statusline)
 set encoding=utf-8
-set autoindent                                                                  " 'n' option in formatoptions below requires autoindent
-set formatoptions=tcqn1                                                         " specify formatting behavior see 'fo-table' for details
-set expandtab                                                                   " use spaces for tabs, run ':retab!' to changes spaces to tabs
+set autoindent                  " 'n' option in formatoptions below requires autoindent
+set formatoptions=tcqn1         " specify formatting behavior see 'fo-table' for details
+set expandtab                   " use spaces for tabs, run ':retab!' to changes spaces to tabs
 set noshiftround
-set scrolloff=10                                                                " offset when scrolling
-set matchpairs+=<:>                                                             " add html pairs '<' & '>', jump pairs with '%'
+set scrolloff=10                " offset when scrolling
+set matchpairs+=<:>             " add html pairs '<' & '>', jump pairs with '%'
 set showmode
 set showcmd
-set hlsearch                                                                    " clear highlighting with ':nohlsearch' if you get bored or
-set incsearch                                                                   " while typing in search show matches
-set ignorecase                                                                  " ignore case in search patterns
-set smartcase                                                                   " override ignorecase if search pattern contains upper case
+set showbreak=↪\ 
+set hlsearch                    " clear highlighting with ':nohlsearch' if you get bored or
+set incsearch                   " while typing in search show matches
+set ignorecase                  " ignore case in search patterns
+set smartcase                   " override ignorecase if search pattern contains upper case
 set cursorline
-set laststatus=2                                                                " always show a statusline
+set laststatus=2                " always show a statusline
+set hidden                      " allows for switching buffers without saving
 
 set shiftwidth=4
 set smarttab
@@ -51,6 +53,47 @@ autocmd FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 autocmd FileType yaml setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 autocmd FileType toml setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 
-nnoremap <C-j> :bnext<CR>
-nnoremap <C-k> :bprev<CR>
+nnoremap gb :bnext<CR>          " next buffer
+nnoremap gB :bprev<CR>          " previous buffer
+nnoremap gt <C-]>               " Go to Tag (ctags)
+nnoremap gT <C-t>               " Jump back (ctags)
+nnoremap tl <tselect<CR>        " Taglist (ctags)
+nnoremap j gj
+nnoremap k gk
 
+" Vimwiki
+let g:vimwiki_list = [{
+    \ 'path': '~/docs/wiki/',
+    \ 'path_html': '~/proj/wiki/',
+    \ 'template_path': '~/docs/wiki/templates/',
+    \ 'template_default': 'page',
+    \ 'template_ext': '.tpl',
+    \ 'css_name': 'style.css'}, {
+    \ 'path': '~/proj/website/',
+    \ 'syntax': 'markdown',
+    \ 'ext': '.md'}] 
+
+" List buffers
+function! BufferList()
+    let l:buffers = getbufinfo({'buflisted':1})
+    " If there is only one buffer, just return its name
+    if len(l:buffers) == 1
+        return fnamemodify(l:buffers[0].name, ':t')
+    endif
+
+    let l:items = []
+    for buf in l:buffers
+        let prefix = (buf.bufnr == bufnr('%') ? '*' : ' ')
+        call add(l:items, prefix . fnamemodify(buf.name, ':t'))
+    endfor
+    return join(l:items, '  ')
+endfunction
+
+" Set the statusline
+set statusline=
+set statusline+=%{BufferList()}
+set statusline+=\%=
+set statusline+=%p%% 
+set statusline+=\ «\ 
+set statusline+=%l:
+set statusline+=%c 

@@ -1,7 +1,7 @@
 profile framework {
     output eDP-1 enable {
         mode 2256x1504@59.999001Hz
-        scale 1.7
+        scale 1.5
         position 0,0
     }
 }

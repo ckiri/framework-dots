@@ -9,7 +9,7 @@ set $up k
 set $right l
 # Note: pass the final command to swaymsg so that the resulting window can be
 # opened on the original workspace that the command was run on.
-set $menu wmenu-run -l 25 | xargs swaymsg exec --
+set $menu wmenu-run -f "Sans-serif Regular 10"  | xargs swaymsg exec --
 # Break up output power management commands for a more readable config
 set $opm_dim 'brightnessctl --save && brightnessctl set 1%'
 set $opm_restore 'brightnessctl --restore'
@@ -150,18 +150,18 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 # "Style" sway windows:
-font sans-serif 11
+font Sans-serif 10
 titlebar_border_thickness 1
 titlebar_padding 4 4
 # Status Bar:
 # Read `man 5 sway-bar` for more information about this section.
 bar {
-    font sans-serif 11
+    font Sans-serif 10
     position bottom
     height 0
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
-    status_command while true; do ~/.local/bin/status.sh; sleep 60; done
+    status_command slstatus -s
     colors {
         statusline #ffffff
         background #323232
@@ -176,7 +176,7 @@ input "1452:592:Keychron_K4_Keychron_K4" {
 }
 input "2362:628:PIXA3854:00_093A:0274_Touchpad" {
     dwt enabled
-    #tap enabled
+    tap enabled
     natural_scroll enabled
     middle_emulation enabled
     accel_profile "flat"
@@ -186,9 +186,10 @@ input "2362:628:PIXA3854:00_093A:0274_Touchpad" {
 # Configure outputs:
 output eDP-1 {
     resolution 2256x1504@59.999001Hz
-    scale 1.7
+    scale 1.5
     scale_filter nearest
     position 0 0
+    background #777777 solid_color
 }
 output "AOC 27B3CF2 AUEQ29A002606" enable {
     mode 1920x1080@100.000000Hz
@@ -196,6 +197,7 @@ output "AOC 27B3CF2 AUEQ29A002606" enable {
     adaptive_sync on
     render_bit_depth 8
     position 1504 0
+    background #777777 solid_color
 }
 # Set XDG_CURRENT_DESKTOP
 include /etc/sway/config.d/*

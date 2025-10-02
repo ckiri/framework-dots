@@ -31,6 +31,8 @@ export OLLAMA_MODELS="${XDG_DATA_HOME}/ollama/models"
 export _JAVA_AWT_WM_NONREPARENTING=1
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on'
 
+export ELECTRON_OZONE_PLATFORM_HINT="auto"
+
 export PATH="${PATH}:${HOME}/.local/bin"
 
 export QT_SCALE_FACTOR=1

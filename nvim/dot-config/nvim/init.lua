@@ -54,23 +54,17 @@ vim.pack.add({
 
 vim.g.vimwiki_list = {
   {
-    path = "~/docs/vimwiki",
-    path_html = "~/docs/vimwiki-html",
-    template_path = "~/docs/vimwiki/template",
-    template_default = "def_template",
-    template_ext = ".html",
+    path = "~/docs/wiki",
+    path_html = "~/proj/wiki",
+    template_path = "~/docs/vimwiki/templates",
+    template_default = "page",
+    template_ext = ".tpl",
+    css_name = "style.css",
   },
   {
-    path = "~/docs/knet/wiki",
+    path = "~/proj/website",
     syntax = 'markdown',
     ext = '.md',
-  },
-  {
-    path = "~/docs/homewiki",
-    path_html = "~/docs/homewiki-html",
-    template_path = "~/docs/homewiki/template",
-    template_default = "def_template",
-    template_ext = ".html",
   },
 }
 
@@ -127,14 +121,8 @@ lspconfig.clangd.setup({
 -- Python
 lspconfig.pylsp.setup{}
 
--- Lua
-vim.lsp.enable('lua_ls')
-
--- CSS
-require'lspconfig'.cssls.setup{}
-
--- Javascript
-lspconfig.ts_ls.setup{}
+-- Go
+vim.lsp.enable('gopls')
 
 -- UI & colors ----------------------------------------------------------------
 
